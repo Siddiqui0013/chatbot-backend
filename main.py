@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
 import uuid
-from chatbot import run_graph, get_initial_state, ChatState
+from chatbot import run_graph, ChatState
 
 load_dotenv()
 
@@ -11,13 +11,12 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["http://localhost:3000", "http://localhost:3001", "https://vercel.com/muhammad-asifs-projects-ff63202b/chatbot/BSTJfv2j4ov1JTW8bD8ufVEBjnsW"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# In-memory session store
 type SessionStore = dict[str, ChatState]
 sessions: SessionStore = {}
 
@@ -48,10 +47,6 @@ async def chat(chat_message: ChatMessage):
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing message: {str(e)}")
-
-@app.get("/api/health")
-async def health_check():
-    return {"status": "healthy", "message": "Hobby Discovery Chatbot API is running"}
 
 @app.post("/api/reset-session")
 async def reset_session(session_id: str):
