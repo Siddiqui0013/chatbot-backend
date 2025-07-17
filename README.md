@@ -1,24 +1,17 @@
+## Install Dependencies
 
-#### c. Run the FastAPI server
+```bash
+pip install -r requirements.txt
+```
+
+## Run the FastAPI server
 
 ```bash
 uvicorn main:app --reload
 ```
 
-The API will be available at [http://localhost:8000](https://chatbot-backend-levg.onrender.com/).
+The API is available at [http://localhost:8000][https://chatbot-backend-levg.onrender.com/].
 
----
-
-### 3. Frontend Setup (Next.js)
-
-```bash
-npm install
-npm run dev
-```
-
-The frontend will be available at [http://localhost:3000](https://vercel.com/muhammad-asifs-projects-ff63202b/chatbot/BSTJfv2j4ov1JTW8bD8ufVEBjnsW).
-
----
 
 ## 🧩 API Endpoints
 
